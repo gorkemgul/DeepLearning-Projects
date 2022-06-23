@@ -38,7 +38,7 @@ model = Sequential([
     #fully connected
     layers.Dense(128, activation = 'relu'),
     layers.Dense(64, activation = 'relu'),
-    layers.Dense(2, activation = 'sigmoid')
+    layers.Dense(2, activation = 'softmax')
     ])
 
 #Model summary
@@ -49,7 +49,7 @@ optimizer = tf.keras.optimizers.Adamax(learning_rate = 0.01)
 #loss
 loss = tf.keras.losses.CategoricalCrossentropy()
 #model compiling
-model.compile(optimizer = optimizer, loss = loss, metrics = ['mse', 'accuracy'])
+model.compile(optimizer = optimizer, loss = loss, metrics = ['accuracy'])
 #training
 history = model.fit(trainDatagen, epochs = 5, verbose = 1, validation_data = testDatagen)
 #evaluating model
